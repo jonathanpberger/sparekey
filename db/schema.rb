@@ -9,26 +9,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100612193917) do
+ActiveRecord::Schema.define(:version => 20100612201003) do
 
   create_table "artifacts", :force => true do |t|
     t.date     "when_posted"
-    t.integer  "location"
+    t.integer  "location_id"
     t.date     "start_date"
     t.date     "end_date"
     t.boolean  "is_an_offer"
     t.text     "content"
     t.text     "origin_uri"
+    t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "friends", :force => true do |t|
-    t.string   "username"
+    t.string   "social_network_handle"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "home_location"
-    t.integer  "social_networking_site"
+    t.integer  "location_id"
+    t.integer  "user_id"
+    t.integer  "social_networking_site_id"
     t.string   "social_network_uri"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -51,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20100612193917) do
     t.string   "username"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "location"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
