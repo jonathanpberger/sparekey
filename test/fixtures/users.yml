@@ -4,10 +4,10 @@ one:
   username: MyString
   first_name: MyString
   last_name: MyString
-  location: 1
+  location_id: 1
 
 two:
   username: MyString
   first_name: MyString
   last_name: MyString
-  location: 1
+  location_id: 1

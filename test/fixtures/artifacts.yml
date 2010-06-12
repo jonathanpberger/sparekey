@@ -8,6 +8,7 @@ one:
   is_an_offer: false
   content: MyText
   origin_uri: MyText
+  friend_id: 1
 
 two:
   when_posted: 2010-06-12
@@ -17,3 +18,4 @@ two:
   is_an_offer: false
   content: MyText
   origin_uri: MyText
+  friend_id: 1
