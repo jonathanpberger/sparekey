@@ -16,13 +16,10 @@ us1 = User.create(:username => "Wood", :first_name => "Chuck", :last_name => "Zi
 us2 = User.create(:username => "Hood", :first_name => "Suck", :last_name => "Winper" ,:location => ls2)
 us3 = User.create(:username => "Fam", :first_name => "Sackoo", :last_name => "Zinnan" ,:location => ls3)
 
-
 social1 = SocialNetworkingSite.create(:site_name => "Linkedin", :site_url => "www.tripit.com")
 social2 = SocialNetworkingSite.create(:site_name => "Linkedin", :site_url => "www.linkedin.com")
 social3 = SocialNetworkingSite.create(:site_name => "Facebook", :site_url => "www.facebook.com")
 social4 = SocialNetworkingSite.create(:site_name => "Foursquare", :site_url => "www.foursquare.com")
-
-# anything w "_id" is wrong and should be 
 
 f1 = Friend.create(:social_network_handle => "James", :first_name => "Wan3", :last_name => "chuck1"  , :location => ls1, :social_networking_site => social1 , :social_network_uri => "www.tripit.com/james", :user => us1 )
 f2 = Friend.create(:social_network_handle => "Crane", :first_name => "Wange", :last_name => "chuck2" , :location => ls2, :social_networking_site => social2 , :social_network_uri => "www.tripit.com/crane", :user => us1 )
