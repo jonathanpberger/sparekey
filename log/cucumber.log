@@ -1,0 +1,6 @@
+# Logfile created on Sat Jun 12 17:02:25 -0400 2010  [4;36;1mUser Create (0.5ms)[0m   [0;1mINSERT INTO "users" ("created_at", "updated_at", "username", "last_name", "location_id", "first_name") VALUES('2010-06-12 21:14:44', '2010-06-12 21:14:44', 'Wood1', 'Winper2', NULL, 'chuck7')[0m
+  [4;36;1mUser Create (0.4ms)[0m   [0;1mINSERT INTO "users" ("created_at", "updated_at", "username", "last_name", "location_id", "first_name") VALUES('2010-06-12 21:16:24', '2010-06-12 21:16:24', 'Wood1', 'Winper2', NULL, 'chuck7')[0m
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-06-12 17:16:24) [GET]
