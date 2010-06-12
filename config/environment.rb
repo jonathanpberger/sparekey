@@ -41,6 +41,6 @@ Rails::Initializer.run do |config|
 
   # Compass told me to put this here
   config.gem "compass", :version => ">= 0.10.2"
-
+  config.gem "authlogic"
 
 end
