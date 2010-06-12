@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  when_posted: 2010-06-12
+  location: 1
+  start_date: 2010-06-12
+  end_date: 2010-06-12
+  is_an_offer: false
+  content: MyText
+  origin_uri: MyText
+
+two:
+  when_posted: 2010-06-12
+  location: 1
+  start_date: 2010-06-12
+  end_date: 2010-06-12
+  is_an_offer: false
+  content: MyText
+  origin_uri: MyText
