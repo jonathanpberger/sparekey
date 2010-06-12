@@ -12,13 +12,9 @@ ls2 = Location.create(:location_name => "Vancover")
 ls3 = Location.create(:location_name => "Windosr")
 
 
-User.create(:username => "Wood1", :first_name => "chuck7", :last_name => "Winper2" ,:location => ls1)
-User.create(:username => "Wood2", :first_name => "chuck6", :last_name => "Winper3" ,:location => ls1)
-User.create(:username => "Wood3", :first_name => "chuck5", :last_name => "Winper4" ,:location => ls1)
-User.create(:username => "Wood4", :first_name => "chuck4", :last_name => "Winper6" ,:location => ls1)
-User.create(:username => "Wood5", :first_name => "chuck3", :last_name => "Winper7" ,:location => ls2)
-User.create(:username => "Wood6", :first_name => "chuck2", :last_name => "Winper8" ,:location => ls2)
-User.create(:username => "Wood7", :first_name => "chuck1", :last_name => "Winper9" ,:location => ls3)
+us1=User.create(:username => "Wood", :first_name => "Chuck", :last_name => "Zinper" ,:location => ls1)
+us2=User.create(:username => "Hood", :first_name => "Suck", :last_name => "Winper" ,:location => ls2)
+us3=User.create(:username => "Fam", :first_name => "Sackoo", :last_name => "Zinnan" ,:location => ls3)
 
 
 social1= SocialNetworkingSite.create(:site_name => "Linkedin", :site_url => "www.tripit.com")
@@ -26,6 +22,10 @@ social2= SocialNetworkingSite.create(:site_name => "Linkedin", :site_url => "www
 social3= SocialNetworkingSite.create(:site_name => "Facebook", :site_url => "www.facebook.com")
 social4= SocialNetworkingSite.create(:site_name => "Foursquare", :site_url => "www.foursquare.com")
 
-Friend.create(:social_network_handle => "James", :first_name => "Wan3", :last_name => "chuck1"  , :location => ls1, :social_networking_site => social1 , :social_network_uri => "www.tripit.com/james" )
-Friend.create(:social_network_handle => "Crane", :first_name => "Wange", :last_name => "chuck2" , :location => ls2, :social_networking_site => social2 , :social_network_uri => "www.tripit.com/crane")
-Friend.create(:social_network_handle => "Minke", :first_name => "Rane", :last_name => "chuck3"  , :location => ls3, :social_networking_site => social3 , :social_network_uri => "www.tripit.com/minke")
+Friend.create(:social_network_handle => "James", :first_name => "Wan3", :last_name => "chuck1"  , :location => ls1, :social_networking_site => social1 , :social_network_uri => "www.tripit.com/james", :user_id => us1 )
+Friend.create(:social_network_handle => "Crane", :first_name => "Wange", :last_name => "chuck2" , :location => ls2, :social_networking_site => social2 , :social_network_uri => "www.tripit.com/crane", :user_id => us1 )
+Friend.create(:social_network_handle => "Minke", :first_name => "Rane", :last_name => "chuck3"  , :location => ls3, :social_networking_site => social3 , :social_network_uri => "www.tripit.com/minke", :user_id => us2 )
+
+Artifacts.create(:when_posted => "28-10-2009", :location_id => ls1 , :start_date => "10-11-2009" , :end_date => "16-11-2009" , :is_an_offer => "Y" , :content =>"Hello friend1" , :origin_uri => "twitter" ,:friend_id => f1)
+Artifacts.create(:when_posted => "28-10-2009", :location_id => ls1 , :start_date => "11-11-2009" , :end_date => "19-11-2009" , :is_an_offer => "Y" , :content =>"Hello friend2" , :origin_uri => "twitter" ,:friend_id => f2)
+Artifacts.create(:when_posted => "28-10-2009", :location_id => ls1 , :start_date => "12-11-2009" , :end_date => "17-11-2009" , :is_an_offer => "Y" , :content =>"Hello friend3" , :origin_uri => "twitter" ,:friend_id => f3)
