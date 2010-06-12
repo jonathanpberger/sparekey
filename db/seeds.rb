@@ -26,6 +26,6 @@ social2= SocialNetworkingSite.create(:site_name => "Linkedin", :site_url => "www
 social3= SocialNetworkingSite.create(:site_name => "Facebook", :site_url => "www.facebook.com")
 social4= SocialNetworkingSite.create(:site_name => "Foursquare", :site_url => "www.foursquare.com")
 
-Friend.create(:social_network_handle => "James", :first_name => "Wan3", :last_name => "chuck1"  , :location => ls1, :social => social1 , :social_network_uri => "www.tripit.com/james" )
-Friend.create(:social_network_handle => "Crane", :first_name => "Wange", :last_name => "chuck2" , :location => ls2, :social => social2 , :social_network_uri => "www.tripit.com/crane")
-Friend.create(:social_network_handle => "Minke", :first_name => "Rane", :last_name => "chuck3"  , :location => ls3, :social => social3 , :social_network_uri => "www.tripit.com/minke")
+Friend.create(:social_network_handle => "James", :first_name => "Wan3", :last_name => "chuck1"  , :location => ls1, :social_networking_site => social1 , :social_network_uri => "www.tripit.com/james" )
+Friend.create(:social_network_handle => "Crane", :first_name => "Wange", :last_name => "chuck2" , :location => ls2, :social_networking_site => social2 , :social_network_uri => "www.tripit.com/crane")
+Friend.create(:social_network_handle => "Minke", :first_name => "Rane", :last_name => "chuck3"  , :location => ls3, :social_networking_site => social3 , :social_network_uri => "www.tripit.com/minke")
