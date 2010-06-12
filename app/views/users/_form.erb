@@ -1,4 +1,4 @@
-<%= form.label :login %><br />
+<%= form.label :login, "Username" %><br />
 <%= form.text_field :login %><br />
 <br />
 <%= form.label :password, form.object.new_record? ? nil : "Change password" %><br />
@@ -6,3 +6,9 @@
 <br />
 <%= form.label :password_confirmation %><br />
 <%= form.password_field :password_confirmation %><br />
+<br />
+<%= form.label :first_name %><br />
+<%= form.text_field :first_name %><br />
+<br />
+<%= form.label :last_name %><br />
+<%= form.text_field :last_name %><br />
