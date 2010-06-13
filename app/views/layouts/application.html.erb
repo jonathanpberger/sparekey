@@ -1,3 +1,10 @@
 <%= render "layouts/header" %>
-<div id="container"><%= yield %></div>
+<div id="container">
+  <div id="header" class="column span-24">
+    <div id="main">
+      <%= yield %>
+    </div>
+  </div>
+
+</div>
 <%= render "layouts/footer" %>
