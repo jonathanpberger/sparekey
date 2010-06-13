@@ -1,5 +1,7 @@
 <div id="header" class="column span-24">
 
+<%= link_to image_tag("tag-logo.png", :alt=>"SpareKeys Logo"), root_path %>
+
 <%- if @current_user -%>
   <%= "Hello #{@current_user.first_name} | " %> <%= link_to('Logout', "user_sessions/destroy") %>
     <% else %>
