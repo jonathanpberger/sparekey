@@ -7,7 +7,7 @@ class MainController < ApplicationController
   require 'open-uri'
   
   def index
-    #load_facebook_feed
+    load_facebook_feed
     
     unless (! params[:user_friend_location] || params[:user_friend_location].empty?)
       @postings = Artifact.find_by_sql ["SELECT artifacts.* FROM artifacts, friends, locations "+
@@ -34,7 +34,7 @@ class MainController < ApplicationController
     # load the current user's news feed from the Facebook Graph API
 
     # hardcode token for now
-    token = "2227470867|2.TkZn6HxO6Xj6qCpKN02AWA__.3600.1276452000-218639|C8HLfX6cDxa3nGCRB5HTznnpyKA."
+    token = "2227470867|2.p27DYFspIyU5m8_v6I1P5w__.3600.1276459200-218639|tIoKTI36CeKfyxswrK1u8wFNZqs."
      
     url = "https://graph.facebook.com/me/home?limit=200&access_token=#{token}"
     buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
