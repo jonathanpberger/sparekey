@@ -7,6 +7,3 @@ doc/app
 db/*.sqlite3
 *.swp
 *~
-public/stylesheets/ie.css
-public/stylesheets/print.css
-public/stylesheets/screen.css
