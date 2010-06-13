@@ -35,7 +35,7 @@ class MainController < ApplicationController
     # load the current user's news feed from the Facebook Graph API
 
     # hardcode token for now
-    token = "2227470867|2._zNKgNrdbmwUZmwpYhcISw__.3600.1276459200-100001223524640|0BeVg1ZgABM6wjJsaiCTxhofalY."
+    token = "2227470867|2.Z0t059kcQDF6eB6lY7YWpg__.3600.1276466400-100001246024434|J4SikXZLwKfcijFaemlCLm826vQ."
      
     url = "https://graph.facebook.com/me/home?limit=200&access_token=#{token}"
     begin 
@@ -100,7 +100,7 @@ class MainController < ApplicationController
   
   def get_friend_from_facebook id
    # hardcode token for now
-    token = "2227470867|2._zNKgNrdbmwUZmwpYhcISw__.3600.1276459200-100001223524640|0BeVg1ZgABM6wjJsaiCTxhofalY."
+    token = "2227470867|2.Z0t059kcQDF6eB6lY7YWpg__.3600.1276466400-100001246024434|J4SikXZLwKfcijFaemlCLm826vQ."
     url = "https://graph.facebook.com/#{id}?access_token=#{token}"
     logger.debug("load_facebook_feed: friend url is [#{url.inspect}]")
     buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
