@@ -66,3 +66,11 @@ Then /^the database contains a location with name "([^"]*)"$/ do |arg1|
   location = Location.find_by_location_name(arg1)
   ! location.nil?
 end
+
+When /^I create an artifact for the post$/ do
+
+end
+
+Then /^the database contains an artifact corresponding to the post$/ do
+  pending # express the regexp above with the code you wish you had
+end
