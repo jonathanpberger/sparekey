@@ -1,9 +1,12 @@
 <div id = "newsfeed">
+<div id="filter">
+
 <% form_tag( { :action => :index }, { :method => :post }) do -%>
-<%= label_tag :user_friend_location, "Location" %>
+<%= label_tag :user_friend_location, "Search your friends' travel updates" %>
 <%= text_field_tag :user_friend_location, '', :size => 20  %>
 <%= submit_tag "Filter" %>
 <% end -%>
+</div>
 <ul>
 <% @postings.each do |posting| %>
 	<li>

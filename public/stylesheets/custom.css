@@ -27,7 +27,13 @@ body {
     margin-right: 10px;
 }
 
-#welcomes{
+#main {
+    
+    min-height: 150px;
+    
+}
+
+#welcome{
     clear: both;
 }
 
