@@ -11,34 +11,16 @@ Scenario: Application filters Facebook newsfeed for travel-related posts
 	Then the non-travel related post is not in the result
 	And the travel-related post is in the result
 
-#Scenario: Application finds already-loaded friend for a post
-#	Given I have a Facebook post with user handle "thomasjefferson345"
-#	And the database contains a friend with user handle "thomasjefferson345"
-#	When I verify the friend for the post
-#	Then I get back a true result
+Scenario: Application loads a friend from Facebook data
+	Given I have a Facebook post with user handle "thomasjefferson345"
+	And the database does not contain a friend with user handle "thomasjefferson345"
+	When I verify the friend for the post
+	Then the database contains a friend with user handle "thomasjefferson345"
 
-#Scenario: Application verifies nonexistence of friend for a post
-#	Given I have a Facebook post with user handle "thomasjefferson345"
-#	And the database does not contain a friend with user handle "thomasjefferson345"
-#	When I verify the friend for the post
-#	Then I get back a false result
-#
-
-
-#Scenario: Application loads a friend from Facebook data
-
-#Scenario: Application verifies existence of a location for the friend if the Facebook data contains a location
-
-#Scenario: If the friend has a location that is not already in the database, the application creates the location in the database
-
-#Scenario: Application creates an artifact from a post
-
-#Scenario: Application loads Facebook user
-#	Given I have a Facebook friend with handle "thomasjefferson345" and hometown "Leesburg, VA"
-#	When I load the Facebook object
-#	Then I should have a location in the database "Leesburg, VA"
-#	And I should have a friend in the database "thomasjefferson345" and location "Leesburg, VA"
-
-	
-#Scenario: Application parses Facebook newsfeed into artifacts and friends
-	
+Scenario: If the friend has a location that is not already in the database, the application creates the location in the database
+	Given I have a Facebook post with user handle "thomasjefferson345" 
+	And I have a Facebook user with user handle "thomasjefferson345" and location "Leesburg, VA"
+	And the database does not contain a friend with user handle "thomasjefferson345"
+	And the database does not contain a location with name "Leesburg, VA"
+	When I verify the friend for the post
+	Then the database contains a location with name "Leesburg, VA"
