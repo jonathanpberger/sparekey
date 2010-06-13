@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100612215108) do
+ActiveRecord::Schema.define(:version => 20100613001515) do
 
   create_table "artifacts", :force => true do |t|
     t.date     "when_posted"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20100612215108) do
     t.string   "social_network_uri"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "avatar_url"
   end
 
   create_table "locations", :force => true do |t|
