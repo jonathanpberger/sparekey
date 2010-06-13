@@ -14,9 +14,9 @@ class MainController < ApplicationController
                                         "WHERE artifacts.friend_id = friends.id "+
                                         "AND friends.user_id = ? "+
                                         "AND artifacts.location_id = locations.id "+
-                                        "AND locations.location_name LIKE '?%'", 
+                                        "AND locations.location_name LIKE ?", 
                                         @current_user.id, 
-                                        params[:user_friend_location] ]
+                                        params[:user_friend_location] + '%' ]
     else
       @postings = @current_user.artifacts.all
     end
