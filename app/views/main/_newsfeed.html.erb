@@ -4,10 +4,13 @@
 <%= text_field_tag :user_friend_location, '', :size => 20  %>
 <%= submit_tag "Filter" %>
 <% end -%>
+<ul>
 <% @postings.each do |posting| %>
-	<p><%= posting.friend.social_network_handle %>
-	<%= posting.content %>
-	Posted on <%= posting.when_posted.strftime('%B %d, %Y') %>
-	</p>
+	<li>
+  	<span class="artifact_name"><%= posting.friend.social_network_handle %></span><br />
+  	<span class="artifact_content"><%= posting.content %></span><br />
+    <span class = "artifact_time">	Posted on <%= posting.when_posted.strftime('%B %d, %Y') %></span><br />
+	</li>
 <% end %>
+</ul>
 </div>

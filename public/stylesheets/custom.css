@@ -35,6 +35,29 @@ body {
     
 }
 
+#newsfeed ul li{
+    min-height: 40px;
+    margin-bottom: 5px;
+    list-style: none;
+    background: url('/images/40-square.png') 0 0 no-repeat;
+    line-height: 1em;
+}
+
+#newsfeed ul li span {
+    margin-left: 50px;
+}
+.artifact_name{
+    font-weight: bold;
+    color: blue;
+    
+}
+.artifact_content{
+    
+}
+.artifact_time{
+    color: orange;
+}
+
 #footer {
     background-color: yellow;
     min-height: 80px;
