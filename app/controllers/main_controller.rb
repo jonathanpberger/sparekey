@@ -37,7 +37,11 @@ class MainController < ApplicationController
     token = "2227470867|2._zNKgNrdbmwUZmwpYhcISw__.3600.1276459200-100001223524640|0BeVg1ZgABM6wjJsaiCTxhofalY."
      
     url = "https://graph.facebook.com/me/home?limit=200&access_token=#{token}"
-    buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
+    begin 
+      buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
+    rescue
+      return
+    end
     result = ActiveSupport::JSON.decode(buffer)
     items = result['data']
     # logger.debug("load_facebook_feed: items is [#{items.inspect}]")
