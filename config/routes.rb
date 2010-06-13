@@ -8,6 +8,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.about '/about', :controller     => 'main', :action  => 'about'
   map.contact '/contact', :controller => 'main', :action  => 'contact'
+  map.contact '/welcome', :controller => 'main', :action  => 'welcome'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
