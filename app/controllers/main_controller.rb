@@ -7,7 +7,7 @@ class MainController < ApplicationController
   require 'open-uri'
   
   def index
-#    load_facebook_feed
+    load_facebook_feed
     
     unless (! params[:user_friend_location] || params[:user_friend_location].empty?)
       @postings = Artifact.find_by_sql ["SELECT artifacts.* FROM artifacts, friends, locations "+
@@ -51,11 +51,11 @@ class MainController < ApplicationController
     filtered_items = [{"from"=>{"name"=>"Lee Jones", "id"=>"408"}, "id"=>"671290026_131088470242747", "created_time"=>"2010-06-13T12:20:56+0000", "type"=>"status", "updated_time"=>"2010-06-13T12:20:56+0000", "message"=>"Day 2: Exhausted.", "likes"=>3}]
     
     filtered_items.each do |f|
-      #friend = Friend.find f["from"]["id"] 
-
       friend_id = f["from"]["id"]
       if Friend.exists? friend_id
         friend = Friend.find friend_id
+        
+        # TODO: save new friend info if it changed 
       else
         url = "https://graph.facebook.com/#{friend_id}?access_token=#{token}"
         logger.debug("load_facebook_feed: friend url is [#{url.inspect}]")
@@ -64,8 +64,14 @@ class MainController < ApplicationController
         logger.debug("load_facebook_feed: result is [#{result.inspect}]")
         
         # for the friend, ensure that their location exists, and save the location
-        Loca
-        
+        friend_location = result["location"]["name"].split(',')[0]
+        logger.debug("load_facebook_feed: friend_location is [#{friend_location}]")
+        location = Location.find_by_location_name(friend_location)
+        location ||= Location.create :location_name => friend_location 
+        logger.debug("load_facebook_feed: location is [#{location.inspect}]")
+
+        # save the friend
+        friend = Friend.create 
         
       end
       
