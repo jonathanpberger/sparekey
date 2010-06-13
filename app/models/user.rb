@@ -3,5 +3,4 @@ class User < ActiveRecord::Base
   has_many :friends
   has_many :artifacts, :through => :friends
   acts_as_authentic
-  
 end

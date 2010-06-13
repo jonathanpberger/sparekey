@@ -26,7 +26,16 @@ end
 
 Given /^([^\s]*) posted "([^"]*)" on ([^\s]*)$/ do |arg1, arg2, arg3|
   friend = Friend.find_by_social_network_handle(arg1)
-  posting = Artifact.create(:when_posted => arg3, :content =>arg2 ,:friend => friend)
+  location = Location.create(:location_name => "Paris")
+  location.save!
+  posting = Artifact.create(:when_posted => arg3, :content =>arg2 ,:friend => friend, :location => location)
   posting.save
 end
 
+Given /^([^\s]*) posted a trip to (.*)$/ do |arg1, arg2|
+  friend = Friend.find_by_social_network_handle(arg1)
+  location = Location.create(:location_name => arg2)
+  location.save!
+  posting = Artifact.create(:location => location,:friend => friend, :when_posted => Time.now)
+  posting.save
+end
