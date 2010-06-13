@@ -7,7 +7,7 @@ class MainController < ApplicationController
   require 'open-uri'
   
   def index
-    load_facebook_feed
+#    load_facebook_feed
     
     unless (! params[:user_friend_location] || params[:user_friend_location].empty?)
       @postings = Artifact.find_by_sql ["SELECT artifacts.* FROM artifacts, friends, locations "+
@@ -50,10 +50,9 @@ class MainController < ApplicationController
     # create dummy filtered items in lieu of filtered hash coming back
     filtered_items = [{"from"=>{"name"=>"Lee Jones", "id"=>"671290026"}, "id"=>"671290026_131088470242747", "created_time"=>"2010-06-13T12:20:56+0000", "type"=>"status", "updated_time"=>"2010-06-13T12:20:56+0000", "message"=>"Day 2: Exhausted.", "likes"=>3}]
     
-    filtered_items do |f|
-      friend = Friend.find f["from"]["id"] 
+    filtered_items.each do |f|
+      #friend = Friend.find f["from"]["id"] 
       if friend.nil?
-        url = "https://graph.facebook.com/me/home?limit=200&access_token=#{token}"
         
       end
       
