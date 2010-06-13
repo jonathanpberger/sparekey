@@ -1,6 +1,19 @@
 body {
-    background: url('/images/wireframe1.png') 0 0 no-repeat;
+    // background: url('/images/wireframe1.png') 0 0 no-repeat;
+}
 
+    
+#container {
+    margin: 0px auto;
+    min-width: 950px;
+    overflow: hidden;
+    width: 80%;
+    background: white;
+    position: relative;
+}
+
+#header {
+    background-color: inherit;
 }
 
 #login {
@@ -9,21 +22,18 @@ body {
     background: blue;
     }
     
-#container {
-    margin: 0px auto;
-    min-width: 950px;
-    overflow: hidden;
-    width: 80%;
-    background: green;
-    position: relative;
+#login_links{
+    float: right;
+    margin-right: 10px;
 }
 
-#header {
-    background-color: orange;
+#welcomes{
+    clear: both;
 }
 
 #footer {
     background-color: yellow;
+    min-height: 80px;
 }
 
 #footer ul {
