@@ -3,13 +3,6 @@ Before do
   activate_authlogic
 end
 
-def login
-  visit path_to("the home page")
-  fill_in "user_session_login", :with => "benfranklin123" 
-  fill_in "user_session_password", :with =>"foobar" 
-  click_button "Login"
-end
-
 Given /^I am logged in as user "([^"]*)"$/ do |arg1|
   @user = User.create(:login => arg1, :first_name => "Ben", :last_name => "Franklin", 
                       :password => "foobar", :password_confirmation => "foobar")

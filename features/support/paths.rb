@@ -1,4 +1,13 @@
 module NavigationHelpers
+  
+  
+def login
+  visit path_to("the home page")
+  fill_in "user_session_login", :with => "benfranklin123" 
+  fill_in "user_session_password", :with =>"foobar" 
+  click_button "Login"
+end
+
   # Maps a name to a path. Used by the
   #
   #   When /^I go to (.+)$/ do |page_name|

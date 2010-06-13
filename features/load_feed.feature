@@ -11,8 +11,19 @@ Scenario: Application filters Facebook newsfeed for travel-related posts
 	Then the non-travel related post is not in the result
 	And the travel-related post is in the result
 
+#Scenario: Application finds already-loaded friend for a post
+#	Given I have a Facebook post with user handle "thomasjefferson345"
+#	And the database contains a friend with user handle "thomasjefferson345"
+#	When I verify the friend for the post
+#	Then I get back a true result
 
-#Scenario: Application verifies existence of friend for a post
+#Scenario: Application verifies nonexistence of friend for a post
+#	Given I have a Facebook post with user handle "thomasjefferson345"
+#	And the database does not contain a friend with user handle "thomasjefferson345"
+#	When I verify the friend for the post
+#	Then I get back a false result
+#
+
 
 #Scenario: Application loads a friend from Facebook data
 
