@@ -2,6 +2,13 @@ body {
     // background: url('/images/wireframe1.png') 0 0 no-repeat;
 }
 
+body {
+    color: #999
+}
+    
+body a {
+    color: #FF9900
+}
     
 #container {
     margin: 0px auto;
@@ -14,6 +21,9 @@ body {
 
 #header {
     background-color: inherit;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #login {
@@ -66,11 +76,12 @@ body {
 div#newsfeed div#filter label {
     font-size: 1.2em;
     font-family: Georgia, "Times New Roman", serif;
+    color: #097054;
 }
 
 .artifact_name{
     font-weight: bold;
-    color: blue;
+    color: #6599FF;
     
 }
 .artifact_content{
@@ -81,8 +92,18 @@ div#newsfeed div#filter label {
 }
 
 #footer {
-    background-color: yellow;
+    background-color: #FFDE00;
     min-height: 80px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+#footer a {
+    color: #999;
+}
+
+#footer a:hover {
+    color: #FF9900;
 }
 
 #footer span {

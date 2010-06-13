@@ -7,7 +7,7 @@ class MainController < ApplicationController
   require 'open-uri'
   
   def index
-    load_facebook_feed
+    #load_facebook_feed
     
     unless (! params[:user_friend_location] || params[:user_friend_location].empty?)
       @postings = Artifact.find_by_sql ["SELECT artifacts.* FROM artifacts, friends, locations "+
