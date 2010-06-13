@@ -67,3 +67,14 @@ Then /^the database contains a location with name "([^"]*)"$/ do |arg1|
   location = Location.find_by_location_name(arg1)
   ! location.nil?
 end
+
+When /^I create an artifact for the post by "([^"]*)"$/ do |arg1|
+  friend = Friend.find_by_social_network_handle(arg1)
+  MainController.new().create_artifact_from_posting friend, @post
+end
+
+Then /^the database contains an artifact corresponding to the post$/ do
+  artifact = Artifact.find_by_content("Day 2: Exhausted.")
+  friend = Friend.find_by_social_network_handle( "thomasjefferson345")
+  ! artifact.nil?
+end
