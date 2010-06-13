@@ -4,16 +4,6 @@
 <h1>Hello <%= @current_user.first_name %></h1>
 
  <!-- newsfeed -->
-<% form_tag( { :action => :index }, { :method => :post }) do -%>
-<%= label_tag :user_friend_location, "Location" %>
-<%= text_field_tag :user_friend_location, '', :size => 20  %>
-<%= submit_tag "Filter" %>
-<% end -%>
-<% @postings.each do |posting| %>
-	<p><%= posting.friend.social_network_handle %>
-	<%= posting.content %>
-	Posted on <%= posting.when_posted.strftime('%B %d, %Y') %>
-	</p>
-<% end %>
+<%= render "newsfeed" %>
 </body>
 </html>
