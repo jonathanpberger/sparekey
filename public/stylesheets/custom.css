@@ -4,9 +4,8 @@ body {
 }
 
 #login {
-    position: absolute;
-    right   : 0;
-    top     : 0;
+    width: 50%;
+    margin: 0 auto;
     background: blue;
     }
     
@@ -20,5 +19,18 @@ body {
 }
 
 #header {
-    
+    background-color: orange;
 }
+
+#footer {
+    background-color: yellow;
+}
+
+#footer ul {
+    text-align: right;
+}
+#footer ul li {
+    display: inline;
+    margin-right: 10px;
+}
+

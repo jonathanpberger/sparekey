@@ -3,6 +3,7 @@
 
 <h1>Hello <%= @current_user.first_name %></h1>
 
+ <!-- newsfeed -->
 <% form_tag( { :action => :index }, { :method => :post }) do -%>
 <%= label_tag :user_friend_location, "Location" %>
 <%= text_field_tag :user_friend_location, '', :size => 20  %>
