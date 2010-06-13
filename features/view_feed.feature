@@ -6,8 +6,8 @@
 Scenario: User sees unfiltered feed
 	Given I am logged in as user "benfranklin123"
 	And user "benfranklin123" has friend "thomasjefferson345" on Facebook
-	And thomasjefferson345 posted "I am going to Paris on July 14" on 2010-06-09
-	And thomasjefferson345 posted "I am going to Germany in August" on 2010-06-10
+	And thomasjefferson345 posted "I am going to Paris on July 14" on 2010-06-09 to "Paris"
+	And thomasjefferson345 posted "I am going to Germany in August" on 2010-06-10 to "Germany"
 	When I go to the home page
 	Then I should see "I am going to Paris on July 14"
 	And I should see "thomasjefferson345"
@@ -18,8 +18,8 @@ Scenario: User sees unfiltered feed
 Scenario: User sees feed filtered by location
 	Given I am logged in as user "benfranklin123"
 	And user "benfranklin123" has friend "thomasjefferson345" on Facebook
-	And thomasjefferson345 posted "I am going to Paris on July 14" on 2010-06-09
-	And thomasjefferson345 posted "I am going to Germany in August" on 2010-06-10
+	And thomasjefferson345 posted "I am going to Paris on July 14" on 2010-06-09 to "Paris"
+	And thomasjefferson345 posted "I am going to Germany in August" on 2010-06-10 to "Germany"
 	When I go to the home page
 	And I fill in "Paris" for "user_friend_location"
 	And I press "Filter"

@@ -24,18 +24,10 @@ Given /^user "([^"]*)" has friend "([^"]*)" on Facebook$/ do |arg1, arg2|
   friend.save
 end
 
-Given /^([^\s]*) posted "([^"]*)" on ([^\s]*)$/ do |arg1, arg2, arg3|
+Given /^([^\s]*) posted "([^"]*)" on ([^\s]*) to "([^"]*)"$/ do |arg1, arg2, arg3, arg4|
   friend = Friend.find_by_social_network_handle(arg1)
-  location = Location.create(:location_name => "Paris")
+  location = Location.create(:location_name => arg4)
   location.save!
   posting = Artifact.create(:when_posted => arg3, :content =>arg2 ,:friend => friend, :location => location)
-  posting.save
-end
-
-Given /^([^\s]*) posted a trip to (.*)$/ do |arg1, arg2|
-  friend = Friend.find_by_social_network_handle(arg1)
-  location = Location.create(:location_name => arg2)
-  location.save!
-  posting = Artifact.create(:location => location,:friend => friend, :when_posted => Time.now)
   posting.save
 end
