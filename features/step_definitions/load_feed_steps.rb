@@ -68,10 +68,13 @@ Then /^the database contains a location with name "([^"]*)"$/ do |arg1|
   ! location.nil?
 end
 
-When /^I create an artifact for the post$/ do
-
+When /^I create an artifact for the post by "([^"]*)"$/ do |arg1|
+  friend = Friend.find_by_social_network_handle(arg1)
+  MainController.new().create_artifact_from_posting friend, @post
 end
 
 Then /^the database contains an artifact corresponding to the post$/ do
-  pending # express the regexp above with the code you wish you had
+  artifact = Artifact.find_by_content("Day 2: Exhausted.")
+  friend = Friend.find_by_social_network_handle( "thomasjefferson345")
+  ! artifact.nil?
 end
