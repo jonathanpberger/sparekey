@@ -28,8 +28,9 @@ Scenario: If the friend has a location that is not already in the database, the 
 Scenario: Application creates an artifact from a post
 	Given I have a Facebook post with user handle "thomasjefferson345" 
 	And I have a Facebook user with user handle "thomasjefferson345" and location "Leesburg, VA"
-	And the database contains a friend with user handle "thomasjefferson345"
-	And the database contains a location with name "Leesburg, VA"
-	When I create an artifact for the post
+	And the database does not contain a friend with user handle "thomasjefferson345"
+	And the database does not contain a location with name "Leesburg, VA"
+	When I verify the friend for the post
+	And I create an artifact for the post by "thomasjefferson345"
 	Then the database contains an artifact corresponding to the post
 	
