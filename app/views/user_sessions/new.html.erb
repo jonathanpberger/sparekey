@@ -1,6 +1,4 @@
-<h1>Login</h1>
-
-<div id="login">
+<div id="login" class="round">
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %> 
@@ -8,8 +6,6 @@
   
   <%= f.label :password %>
   <%= f.password_field :password, :size  => 15 %>
-  <br />
-  <%= f.check_box :remember_me %><%= f.label :remember_me %><br />
   <br />
   <%= f.submit "Login" %>
 <% end %>

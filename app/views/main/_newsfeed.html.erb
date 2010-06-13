@@ -2,7 +2,7 @@
 <div id="filter">
 
 <% form_tag( { :action => :index }, { :method => :post }) do -%>
-<%= label_tag :user_friend_location, "Search your friends' travel updates" %>
+<%= label_tag :user_friend_location, "Search Your Friends' Travel Updates" %>
 <%= text_field_tag :user_friend_location, '', :size => 20  %>
 <%= submit_tag "Filter" %>
 <% end -%>
@@ -10,6 +10,8 @@
 <ul>
 <% @postings.each do |posting| %>
 	<li>
+
+<span>	  <%= image_tag('/images/40-square.png', :alt => "user icon") %></span>
   	<span class="artifact_name"><%= posting.friend.social_network_handle %></span><br />
   	<span class="artifact_content"><%= posting.content %></span><br />
     <span class = "artifact_time">	Posted on <%= posting.when_posted.strftime('%B %d, %Y') %></span><br />

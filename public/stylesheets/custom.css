@@ -17,10 +17,17 @@ body {
 }
 
 #login {
-    width: 50%;
-    margin: 0 auto;
-    background: blue;
+    border:1px solid #CCCCCC;
+    font-size:2em;
+    margin:80px auto;
+    padding:25px;
+    position:relative;
+    width:30%;
     }
+
+#login input {
+    float: right;
+}
     
 #login_links{
     float: right;
@@ -45,13 +52,22 @@ body {
     min-height: 40px;
     margin-bottom: 5px;
     list-style: none;
-    background: url('/images/40-square.png') 0 0 no-repeat;
+
     line-height: 1em;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
 }
 
 #newsfeed ul li span {
-    margin-left: 50px;
+    margin-right: 10px;
+    float: left;
 }
+
+div#newsfeed div#filter label {
+    font-size: 1.2em;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
 .artifact_name{
     font-weight: bold;
     color: blue;
@@ -69,11 +85,21 @@ body {
     min-height: 80px;
 }
 
+#footer span {
+    margin-left: 10px;
+}
+
 #footer ul {
-    text-align: right;
+    float: right;
 }
 #footer ul li {
     display: inline;
     margin-right: 10px;
 }
 
+/*//////////////// Utility Styles ////////////////*/
+
+.round {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;}
