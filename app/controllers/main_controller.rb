@@ -34,7 +34,7 @@ class MainController < ApplicationController
     # load the current user's news feed from the Facebook Graph API
 
     # hardcode token for now
-    token = "2227470867|2.p27DYFspIyU5m8_v6I1P5w__.3600.1276459200-218639|tIoKTI36CeKfyxswrK1u8wFNZqs."
+    token = "2227470867|2._zNKgNrdbmwUZmwpYhcISw__.3600.1276459200-100001223524640|0BeVg1ZgABM6wjJsaiCTxhofalY."
      
     url = "https://graph.facebook.com/me/home?limit=200&access_token=#{token}"
     buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
