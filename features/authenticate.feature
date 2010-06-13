@@ -10,6 +10,5 @@ Scenario: User logs in
 	And   I fill in "foobar" for "user_session_password"
 	And   I press "Login"
 	Then  I should see "Ben"
-	And user "benfranklin123" should be in the session.
 
 #Scenario: User logs out

@@ -2,5 +2,12 @@
 <body>
 
 <h1>Hello <%= @current_user.first_name %></h1>
+
+<% @current_user.artifacts.all().each do |posting| %>
+	<p><%= posting.friend.social_network_handle %>
+	<%= posting.content %>
+	Posted on <%= posting.when_posted.strftime('%B %d, %Y') %>
+	</p>
+<% end %>
 </body>
 </html>
