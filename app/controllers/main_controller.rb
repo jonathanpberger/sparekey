@@ -44,6 +44,7 @@ class MainController < ApplicationController
     end
     result = ActiveSupport::JSON.decode(buffer)
     items = result['data']
+    $stderr.puts items.inspect
     # logger.debug("load_facebook_feed: items is [#{items.inspect}]")
     
     # remove all entries that don't have anything to do with travel
@@ -73,6 +74,9 @@ class MainController < ApplicationController
     return true if message =~ /^(is|will\s+be)\s+(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z]/
     return true if message =~ /am\s+(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z]/
     return true if message =~ /(am|is|will\s+be)\s+(planning\s+a\s+trip\s+to|taking\s+a\s+trip\s+to|going\s+on\s+a\s+trip\s+to)\s+[A-Z]/
+    return true if message =~ /Can\'t\s+wait\s+to\s+go\+sto\s+[A-Z]/
+    return true if message =~ /Headed\+sto\s+[A-Z]/
+    return true if message =~ /Planning\s+to\s+go\+sto\s+[A-Z]/
   end
  
   def verify_friend posting
