@@ -84,12 +84,15 @@ class MainController < ApplicationController
     friend = Friend.find_or_create_by_social_network_handle posting['from']['name']
     friend.save
     friend_info = get_friend_from_facebook(posting['from']['id'])
-    if friend_info['location'] && friend_info['location']['name']
-      location = Location.find_or_create_by_location_name(friend_info['location']['name'])
-      location.save
-      location.reload
-      friend.location = location
-      friend.save
+    begin
+      if friend_info['location'] && friend_info['location']['name']
+        location = Location.find_or_create_by_location_name(friend_info['location']['name'])
+        location.save
+        location.reload
+        friend.location = location
+        friend.save
+      end
+    rescue
     end
     friend.reload
     return friend
