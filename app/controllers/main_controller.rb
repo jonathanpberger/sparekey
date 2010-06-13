@@ -8,7 +8,7 @@ class MainController < ApplicationController
   
   def index
     load_facebook_feed
-    
+    @postings = nil
     unless (! params[:user_friend_location] || params[:user_friend_location].empty?)
       @postings = Artifact.find_by_sql ["SELECT artifacts.* FROM artifacts, friends, locations "+
                                         "WHERE artifacts.friend_id = friends.id "+
@@ -20,6 +20,7 @@ class MainController < ApplicationController
     else
       @postings = @current_user.artifacts.all
     end
+    @postings = Artifact.all
   end
   
   
@@ -44,7 +45,6 @@ class MainController < ApplicationController
     end
     result = ActiveSupport::JSON.decode(buffer)
     items = result['data']
-    $stderr.puts items.inspect
     # logger.debug("load_facebook_feed: items is [#{items.inspect}]")
     
     # remove all entries that don't have anything to do with travel
@@ -52,7 +52,8 @@ class MainController < ApplicationController
     
     # create dummy filtered items in lieu of filtered hash coming back
     filtered_items = filter_facebook_feed items
-    
+   
+    Artifact.delete_all
     filtered_items.each do |posting|
       friend = verify_friend posting
       create_artifact_from_posting(friend, posting)
@@ -70,13 +71,13 @@ class MainController < ApplicationController
   end
   
   def contains_travel_reference posting
-    message = posting[:message]
-    return true if message =~ /^(is|will\s+be)\s+(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z]/
-    return true if message =~ /am\s+(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z]/
-    return true if message =~ /(am|is|will\s+be)\s+(planning\s+a\s+trip\s+to|taking\s+a\s+trip\s+to|going\s+on\s+a\s+trip\s+to)\s+[A-Z]/
-    return true if message =~ /Can\'t\s+wait\s+to\s+go\+sto\s+[A-Z]/
-    return true if message =~ /Headed\+sto\s+[A-Z]/
-    return true if message =~ /Planning\s+to\s+go\+sto\s+[A-Z]/
+    message = posting['message']
+    return true if message =~ /(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z].*/
+    return true if message =~ /(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z].*/
+    return true if message =~ /(am|is|will\s+be)\s+(planning\s+a\s+trip\s+to|taking\s+a\s+trip\s+to|going\s+on\s+a\s+trip\s+to)\s+[A-Z].*/
+    return true if message =~ /Can\'t\s+wait\s+to\s+go\+sto\s+.*/
+    return true if message =~ /Headed\+sto\s+.*/
+    return true if message =~ /Planning\s+to\s+go\+sto\s+.*/
   end
  
   def verify_friend posting
@@ -95,7 +96,9 @@ class MainController < ApplicationController
   end
   
   def get_friend_from_facebook id
-    url = "https://graph.facebook.com/#{friend_id}?access_token=#{token}"
+   # hardcode token for now
+    token = "2227470867|2._zNKgNrdbmwUZmwpYhcISw__.3600.1276459200-100001223524640|0BeVg1ZgABM6wjJsaiCTxhofalY."
+    url = "https://graph.facebook.com/#{id}?access_token=#{token}"
     logger.debug("load_facebook_feed: friend url is [#{url.inspect}]")
     buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
     result = ActiveSupport::JSON.decode(buffer)

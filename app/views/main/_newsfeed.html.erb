@@ -14,7 +14,7 @@
 <span>	  <%= image_tag('/images/40-square.png', :alt => "user icon") %></span>
   	<span class="artifact_name"><%= posting.friend.social_network_handle %></span><br />
   	<span class="artifact_content"><%= posting.content %></span><br />
-    <span class = "artifact_time">	Posted on <%= posting.when_posted.strftime('%B %d, %Y') %></span><br />
+    <span class = "artifact_time">	Posted on <%= posting.when_posted %></span><br />
 	</li>
 <% end %>
 </ul>
