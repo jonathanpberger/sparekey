@@ -81,6 +81,12 @@ class MainController < ApplicationController
     
     
   end
-  
+
+#   @post = {"from"=>{"name"=> arg1, "id"=>"671290026"}, "id"=>"671290026_131088470242747", "created_time"=>"2010-06-13T12:20:56+0000", "type"=>"status", "updated_time"=>"2010-06-13T12:20:56+0000", "message"=>"Day 2: Exhausted.", "likes"=>3}
+
+public  
+  def create_artifact_from_posting posting
+    Artifact.create()
+  end
 
 end

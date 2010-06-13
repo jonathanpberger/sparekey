@@ -31,8 +31,4 @@ module MainHelper
   def self.get_friend_from_facebook id
 
   end
-
-  def self.create_artifact_from_posting
-    
-  end
 end

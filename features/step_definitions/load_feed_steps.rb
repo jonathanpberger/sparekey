@@ -68,9 +68,11 @@ Then /^the database contains a location with name "([^"]*)"$/ do |arg1|
 end
 
 When /^I create an artifact for the post$/ do
-
+  MainController.new().create_artifact_from_posting @post
 end
 
 Then /^the database contains an artifact corresponding to the post$/ do
-  pending # express the regexp above with the code you wish you had
+  artifact = Artifact.find_by_content("Day 2: Exhausted.")
+  $stderr.puts("Artifact is: " + artifact.inspect)
+  ! artifact.nil?
 end
