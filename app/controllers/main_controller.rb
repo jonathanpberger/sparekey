@@ -34,7 +34,7 @@ class MainController < ApplicationController
 
     # load the current user's news feed from the Facebook Graph API
 
-    # hardcode token for now
+    # hardcode token for now - get your own by logging in to http://facebook.com, then going to https://graph.facebook.com/me/home and copying the access token.  It will last for 1.5 hours. TODO: implement Facebook app to get app ID, and add Oauth from http://developers.facebook.com/docs/authentication/
     token = "2227470867|2.Z0t059kcQDF6eB6lY7YWpg__.3600.1276466400-100001246024434|J4SikXZLwKfcijFaemlCLm826vQ."
      
     url = "https://graph.facebook.com/me/home?limit=200&access_token=#{token}"
@@ -99,7 +99,7 @@ class MainController < ApplicationController
   end
   
   def get_friend_from_facebook id
-   # hardcode token for now
+   # hardcode token for now - get your own by logging in to http://facebook.com, then going to https://graph.facebook.com/me/home and copying the access token 
     token = "2227470867|2.Z0t059kcQDF6eB6lY7YWpg__.3600.1276466400-100001246024434|J4SikXZLwKfcijFaemlCLm826vQ."
     url = "https://graph.facebook.com/#{id}?access_token=#{token}"
     logger.debug("load_facebook_feed: friend url is [#{url.inspect}]")
