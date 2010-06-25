@@ -1,43 +1,42 @@
 class MainController < ApplicationController
-  before_filter :require_user
-
-  require 'openssl'
-  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  before_filter :require_user, :only  => :index
 
   require 'open-uri'
+  require 'travel_posts_filter'
+  require 'openssl'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   
+  # hardcode token for now
+  def facebook_token
+    "2227470867|2.5667SG_L0Cniv1E2ThhrOQ__.3600.1277514000-699493134|cGcDN8uwY2Gwuwg-OGTrmbqUkwQ."
+  end
+
   def index
     load_facebook_feed
-    @postings = nil
-    unless (! params[:user_friend_location] || params[:user_friend_location].empty?)
-      @postings = Artifact.find_by_sql ["SELECT artifacts.* FROM artifacts, friends, locations "+
-                                        "WHERE artifacts.friend_id = friends.id "+
-                                        "AND friends.user_id = ? "+
-                                        "AND artifacts.location_id = locations.id "+
-                                        "AND locations.location_name LIKE ?", 
-                                        @current_user.id, 
-                                        params[:user_friend_location] + '%' ]
-    else
-      @postings = @current_user.artifacts.all
+    sql_start = "SELECT artifacts.* FROM artifacts, friends "
+    sql_end =   " WHERE artifacts.friend_id = friends.id"+
+                " AND friends.user_id = ? "
+                             
+    query_params = [@current_user.id]
+    #This is really for searching posts by the place where friends live, not by the place names
+    #in the content of their posts. The homepage is misleading (and so is the dummy data).
+    if(params[:user_friend_location] && ! params[:user_friend_location].empty?)
+      sql_start << ", locations"
+      sql_end << "AND artifacts.location_id = locations.id "+
+                 "AND locations.location_name LIKE ?"
+      query_params << params[:user_friend_location] + '%'
     end
-    @postings = Artifact.all
+    
+    #Add to SQL again if params for start date and end date come in
+    
+    @postings = Artifact.find_by_sql [sql_start + sql_end, *query_params]
   end
   
-  
-  # load the current user's news feed from the Facebook Graph API
-  # remove all entries that don't have anything to do with travel
-  # for all entries that have to do with travel, ensure that the friend is loaded
-  # for the friend, ensure that their location exists, and save the location
-  # save the friend
-  # save the entry as a travel 'artifact' posting
+  private
   def load_facebook_feed
 
     # load the current user's news feed from the Facebook Graph API
-
-    # hardcode token for now - get your own by logging in to http://facebook.com, then going to https://graph.facebook.com/me/home and copying the access token.  It will last for 1.5 hours. TODO: implement Facebook app to get app ID, and add Oauth from http://developers.facebook.com/docs/authentication/
-    token = "2227470867|2.Z0t059kcQDF6eB6lY7YWpg__.3600.1276466400-100001246024434|J4SikXZLwKfcijFaemlCLm826vQ."
-     
-    url = "https://graph.facebook.com/me/home?limit=200&access_token=#{token}"
+    url = "https://graph.facebook.com/me/home?limit=200&access_token=#{facebook_token}"
     begin 
       buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
     rescue
@@ -45,39 +44,17 @@ class MainController < ApplicationController
     end
     result = ActiveSupport::JSON.decode(buffer)
     items = result['data']
-    # logger.debug("load_facebook_feed: items is [#{items.inspect}]")
-    
+
     # remove all entries that don't have anything to do with travel
-    # filtered_items = filter_facebook_feed(items)
+    filter = TravelPostsFilter.new
+    filtered_items = filter.filter_facebook_feed items
     
-    # create dummy filtered items in lieu of filtered hash coming back
-    filtered_items = filter_facebook_feed items
-   
+    #Limit this to deleting the ones for this user
     Artifact.delete_all
     filtered_items.each do |posting|
-      friend = verify_friend posting
+      friend = verify_friend posting # ensure that the friend is loaded
       create_artifact_from_posting(friend, posting)
     end
-  end
-
-  def filter_facebook_feed data_objects
-    filtered_objects = Array.new
-    data_objects.each do |posting|
-      if contains_travel_reference(posting)
-        filtered_objects.push(posting)
-      end
-    end
-    return filtered_objects
-  end
-  
-  def contains_travel_reference posting
-    message = posting['message']
-    return true if message =~ /(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z].*/
-    return true if message =~ /(going\s+to|traveling\s+to|flying\s+to|taking\s+a\s+train\s+to)\s+[A-Z].*/
-    return true if message =~ /(am|is|will\s+be)\s+(planning\s+a\s+trip\s+to|taking\s+a\s+trip\s+to|going\s+on\s+a\s+trip\s+to)\s+[A-Z].*/
-    return true if message =~ /Can\'t\s+wait\s+to\s+go\+sto\s+.*/
-    return true if message =~ /Headed\+sto\s+.*/
-    return true if message =~ /Planning\s+to\s+go\+sto\s+.*/
   end
  
   def verify_friend posting
@@ -99,16 +76,14 @@ class MainController < ApplicationController
   end
   
   def get_friend_from_facebook id
-   # hardcode token for now - get your own by logging in to http://facebook.com, then going to https://graph.facebook.com/me/home and copying the access token 
-    token = "2227470867|2.Z0t059kcQDF6eB6lY7YWpg__.3600.1276466400-100001246024434|J4SikXZLwKfcijFaemlCLm826vQ."
-    url = "https://graph.facebook.com/#{id}?access_token=#{token}"
+    url = "https://graph.facebook.com/#{id}?access_token=#{facebook_token}"
     logger.debug("load_facebook_feed: friend url is [#{url.inspect}]")
     buffer = open(URI.encode(url), "UserAgent" => "Ruby-Wget").read
     result = ActiveSupport::JSON.decode(buffer)
     logger.debug("load_facebook_feed: result is [#{result.inspect}]")
   end
 
-
+# Sample post data from Facebook:
 #   @post = {"from"=>{"name"=> arg1, "id"=>"671290026"}, "id"=>"671290026_131088470242747", "created_time"=>"2010-06-13T12:20:56+0000", "type"=>"status", "updated_time"=>"2010-06-13T12:20:56+0000", "message"=>"Day 2: Exhausted.", "likes"=>3}
  
   def create_artifact_from_posting(friend, posting)

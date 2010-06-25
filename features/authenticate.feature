@@ -1,4 +1,4 @@
- Feature: Authenticate
+Feature: Authenticate
 	In order to be able to use the sparekey site
 	As a user
 	I want to be recognized as a user of the site

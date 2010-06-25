@@ -1,9 +1,25 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  site_name: MyString
-  site_url: MyString
-
-two:
-  site_name: MyString
-  site_url: MyString
+--- 
+social_networking_sites_001: 
+  created_at: 2010-06-13 00:18:39
+  site_url: www.tripit.com
+  updated_at: 2010-06-13 00:18:39
+  id: "1"
+  site_name: TripIt
+social_networking_sites_002: 
+  created_at: 2010-06-13 00:18:39
+  site_url: www.linkedin.com
+  updated_at: 2010-06-13 00:18:39
+  id: "2"
+  site_name: Linkedin
+social_networking_sites_003: 
+  created_at: 2010-06-13 00:18:39
+  site_url: www.facebook.com
+  updated_at: 2010-06-13 00:18:39
+  id: "3"
+  site_name: Facebook
+social_networking_sites_004: 
+  created_at: 2010-06-13 00:18:39
+  site_url: www.foursquare.com
+  updated_at: 2010-06-13 00:18:39
+  id: "4"
+  site_name: Foursquare

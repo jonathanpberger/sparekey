@@ -1,19 +1,85 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  social_network_handle: MyString
-  first_name: MyString
-  last_name: MyString
-  location_id: 1
-  user_id: 1
-  social_networking_site_id: 1
-  social_network_uri: MyString
-
-two:
-  social_network_handle: MyString
-  first_name: MyString
-  last_name: MyString
-  location_id: 1
-  user_id: 1
-  social_networking_site_id: 1
-  social_network_uri: MyString
+--- 
+friends_001: 
+  social_network_uri: www.tripit.com/chuck
+  avatar_url: http://www.tripit.com/chuck/chuck.jpg
+  created_at: 2010-06-13 00:18:39
+  social_network_handle: Chuck Wang
+  updated_at: 2010-06-13 00:18:39
+  id: "1"
+  user_id: "1"
+  last_name: Wang
+  location_id: "1"
+  social_networking_site_id: "1"
+  first_name: Chuck
+friends_002: 
+  social_network_uri: www.linkedin.com/crane
+  avatar_url: http://www.linkedin.com/crane/crane.jpg
+  created_at: 2010-06-13 00:18:39
+  social_network_handle: Mart Crane
+  updated_at: 2010-06-13 00:18:39
+  id: "2"
+  user_id: "1"
+  last_name: Crane
+  location_id: "2"
+  social_networking_site_id: "2"
+  first_name: Martin
+friends_003: 
+  social_network_uri: www.tripit.com/minke
+  avatar_url: http://www.tripit.com/minke/minke.jpg
+  created_at: 2010-06-13 00:18:39
+  social_network_handle: Rane Minke
+  updated_at: 2010-06-13 00:18:39
+  id: "3"
+  user_id: "1"
+  last_name: Minke
+  location_id: "3"
+  social_networking_site_id: "1"
+  first_name: Rane
+friends_004: 
+  social_network_uri: www.facebook.com/james
+  avatar_url: http://www.facebook.com/james/james.jpg
+  created_at: 2010-06-13 00:18:58
+  social_network_handle: James Jones
+  updated_at: 2010-06-13 00:18:58
+  id: "4"
+  user_id: "1"
+  last_name: Jones
+  location_id: "2"
+  social_networking_site_id: "3"
+  first_name: James
+friends_005: 
+  social_network_uri: 
+  avatar_url: 
+  created_at: 2010-06-13 00:46:16
+  social_network_handle: thomasjefferson345
+  updated_at: 2010-06-13 00:46:16
+  id: "5"
+  user_id: "2"
+  last_name: Jefferson
+  location_id: "1"
+  social_networking_site_id: "4"
+  first_name: Thomas
+friends_006: 
+  social_network_uri: 
+  avatar_url: 
+  created_at: 2010-06-13 19:09:38
+  social_network_handle: Kevin Engine
+  updated_at: 2010-06-13 19:09:38
+  id: "6"
+  user_id: "2"
+  last_name: Engine
+  location_id: "5"
+  social_networking_site_id: "3"
+  first_name: Kevin
+friends_007: 
+  social_network_uri: 
+  avatar_url: 
+  created_at: 2010-06-13 19:11:58
+  social_network_handle: Barb Roland
+  updated_at: 2010-06-13 19:11:58
+  id: "7"
+  user_id: "2"
+  last_name: Roland
+  location_id: "4"
+  social_networking_site_id: "3"
+  first_name: Barb

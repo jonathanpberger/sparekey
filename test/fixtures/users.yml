@@ -1,13 +1,23 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  username: MyString
-  first_name: MyString
-  last_name: MyString
-  location_id: 1
-
-two:
-  username: MyString
-  first_name: MyString
-  last_name: MyString
-  location_id: 1
+--- 
+users_001: 
+  created_at: 2010-06-13 01:40:09
+  crypted_password: aff35e6b9689d58de748e9d9eca28eff1ffeef26a7aa3092fdee3656156a1781934a4a464b9eb60330240d449e1eac297c88ff1fd0c0b6383b88801ecc9f8685
+  updated_at: 2010-06-13 01:40:09
+  id: "1"
+  password_salt: j5El_P2Y_fXnJSurwiuY
+  last_name: Smith
+  location_id: 
+  persistence_token: dfe3b657e392a5c22e5449e505c5193eaebea333a9785b2d30857031a1c2ec1d644797f838b34036c76996e6c1a1f1ea2513fe3468449a010d37cb023124dc0f
+  login: fsmith
+  first_name: Fred
+users_002: 
+  created_at: 2010-06-13 00:09:46
+  crypted_password: 6cfb144dc3678cec85ee8328937113c494dea5e8ff41f30493953d2584cec94c8046bd4bbdfc3984573c884c9d7fa1f0803cd2fb3d3bc75be7637ac0311d872f
+  updated_at: 2010-06-13 00:09:46
+  id: "2"
+  password_salt: xlUuq65lkbQMgf6nTyGj
+  last_name: Franklin
+  location_id: 
+  persistence_token: cc838b7ecf7b85fb05b8861b067d4a81eb351206a10054f8af6f93238eb978481a212584df2599c38ac70bc6e490fb555bfc88c6b474a0b7b152bd25f31e4ee8
+  login: benfranklin123
+  first_name: Ben

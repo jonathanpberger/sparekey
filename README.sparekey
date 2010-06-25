@@ -1,0 +1,3 @@
+There is dummy data in test/fixtures. This can be loaded using rake db:fixtures:load.
+
+You can log in as benfranklin123 or fsmith with password foobar

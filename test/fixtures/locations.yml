@@ -1,7 +1,41 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  location_name: MyString
-
-two:
-  location_name: MyString
+--- 
+locations_001: 
+  created_at: 2010-06-13 00:18:01
+  updated_at: 2010-06-13 00:18:01
+  id: "1"
+  location_name: New York
+locations_002: 
+  created_at: 2010-06-13 00:18:01
+  updated_at: 2010-06-13 00:18:01
+  id: "2"
+  location_name: Vancouver
+locations_003: 
+  created_at: 2010-06-13 00:18:01
+  updated_at: 2010-06-13 00:18:01
+  id: "3"
+  location_name: Windsor
+locations_004: 
+  created_at: 
+  updated_at: 
+  id: "4"
+  location_name: Paris
+locations_005: 
+  created_at: 
+  updated_at: 
+  id: "5"
+  location_name: Germany
+locations_006: 
+  created_at: 
+  updated_at: 
+  id: "6"
+  location_name: Chicago
+locations_007: 
+  created_at: 
+  updated_at: 
+  id: "7"
+  location_name: Venice
+locations_008: 
+  created_at: 
+  updated_at: 
+  id: "8"
+  location_name: Boston
